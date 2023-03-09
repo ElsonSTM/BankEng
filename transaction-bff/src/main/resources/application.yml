@@ -1,0 +1,7 @@
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+Spring:
+  redis:
+    port: 6379
+    host: localhost
