@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.6.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'idea'
+	id "org.flywaydb.flyway" version "8.4.3"
 }
 
 group = 'br.com.bankeng'
@@ -19,8 +21,17 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.flywaydb:flyway-core'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+flyway {
+	url= 'jdbc:postgresql://localhost:5434/limites'
+	user = 'postgres'
+	password = 'elson'
+}
+
+build.dependsOn(flywayMigrate)
 
 test {
 	useJUnitPlatform()
