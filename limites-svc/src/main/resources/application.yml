@@ -19,4 +19,5 @@ spring:
       show-sql: true
     generate-ddl: true
 
-limite: 2000
+limite:
+  valor: 2000
