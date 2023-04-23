@@ -20,12 +20,19 @@ public class LimiteDiarioController {
     public LimiteDiarioController(LimiteDiarioService limiteDiarioService) {
         this.limiteDiarioService = limiteDiarioService;
     }
+    @GetMapping(value = "/limite-diario/{agencia}/{conta}")
+    public LimiteDiario buscarLimiteDiario(@PathVariable("agencia") final Long agencia, @PathVariable("conta") final Long conta) {
+        final Optional<LimiteDiario> limiteDiario = limiteDiarioService.buscarLimiteDiario(agencia, conta);
+        if (limiteDiario.isPresent()) {
+            return limiteDiario.get();
+        }
 
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Recurso não encontrado");
+    }
     @GetMapping(value = "/limite-diario/{id}")
     public LimiteDiario findById(@PathVariable("id") Long id) {
 
         Optional<LimiteDiario> limiteDiarioOpt = limiteDiarioService.findById(id);
-
         if (limiteDiarioOpt.isPresent()) {
             return limiteDiarioOpt.get();
         }
