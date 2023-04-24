@@ -3,6 +3,7 @@ package br.com.bankeng.transactionbff.api;
 import br.com.bankeng.transactionbff.domain.TransactionService;
 import br.com.bankeng.transactionbff.dto.RequestTransactionDto;
 import br.com.bankeng.transactionbff.dto.TransactionDto;
+import br.com.bankeng.transactionbff.exception.NotFondException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -59,7 +60,7 @@ public class TransactionController {
     if(transactionDto.isPresent()) {
         return Mono.just(transactionDto.get());
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+        throw new NotFondException("Unable to find resource");
 
     }
 
