@@ -31,7 +31,7 @@ public class TransactionDto {
     @Valid
     private Conta conta;
     @Valid
-    private BeneficiarioDto beneficiarioDto;
+    private BeneficiarioDto beneficiario;
     @NotNull(message = "Informar o tipo de transação")
     private TipoTransacao tipoTransacao;
     private SituacaoEnum situacao;
